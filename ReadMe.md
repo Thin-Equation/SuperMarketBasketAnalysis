@@ -24,8 +24,8 @@ pip install -r requirements.txt
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your-repo/market-basket-analysis-spark.git
-    cd market-basket-analysis-spark
+    git clone https://github.com/Thin-Equation/SuperMarketBasketAnalysis.git
+    cd SuperMarketBasketAnalysis
     ```
 
 2. Install the required Python packages:
