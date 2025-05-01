@@ -1,17 +1,16 @@
 # SuperMarket Basket Analysis Application
 
-This project provides a web application for market basket analysis using the FP-Growth algorithm to find frequent itemsets and association rules in retail transaction data. The application consists of a Python FastAPI backend and a Next.js TypeScript frontend.
+This project provides a web application for market basket analysis to find frequent itemsets and association rules in retail transaction data. The application consists of a Python FastAPI backend and a Next.js TypeScript frontend.
 
 ## Project Structure
 
-- `backend/`: FastAPI backend server
-  - `app/`: Application code
-    - `models/`: Data models and analysis logic
-    - `routers/`: API endpoints
+- `SuperMarketBasketAnalysisBackend/`: FastAPI backend server
+  - `models/`: Data models and analysis logic 
+  - `routers/`: API endpoints
   - `requirements.txt`: Python dependencies
-  - `run.py`: Server startup script
+  - `main.py`: Server startup script
 
-- `frontend/`: Next.js TypeScript frontend
+- `SuperMarketBasketAnalysisFrontend/`: Next.js TypeScript frontend
   - `src/`: Source code
     - `app/`: Next.js app directory
     - `components/`: React components
@@ -29,7 +28,7 @@ This project provides a web application for market basket analysis using the FP-
 
 1. Navigate to the backend directory:
    ```
-   cd backend
+   cd SuperMarketBasketAnalysisBackend
    ```
 
 2. Create a virtual environment (optional but recommended):
@@ -45,7 +44,7 @@ This project provides a web application for market basket analysis using the FP-
 
 4. Start the FastAPI server:
    ```
-   python run.py
+   python main.py
    ```
 
    The API will be available at http://localhost:8000
@@ -56,7 +55,7 @@ This project provides a web application for market basket analysis using the FP-
 
 1. Navigate to the frontend directory:
    ```
-   cd frontend
+   cd SuperMarketBasketAnalysisFrontend
    ```
 
 2. Install dependencies:
@@ -102,9 +101,9 @@ You can use the provided "Online Retail.xlsx" file as sample data, which contain
 - **Backend**:
   - Python
   - FastAPI
-  - PySpark (for FP-Growth algorithm)
   - Pandas
   - Matplotlib
+  - NumPy
 
 - **Frontend**:
   - Next.js
@@ -112,12 +111,15 @@ You can use the provided "Online Retail.xlsx" file as sample data, which contain
   - React
   - Tailwind CSS
   - Axios
+  - Chart.js
+  - React Chart.js 2
+  - React Hook Form
 
 ## API Endpoints
 
 - `POST /api/upload`: Upload retail data file
 - `POST /api/process`: Process and prepare data
-- `POST /api/train`: Train FP-Growth model
+- `POST /api/train`: Train market basket analysis model
 - `GET /api/visualization`: Get visualization of frequent itemsets
 - `POST /api/recommend`: Get product recommendations
 - `POST /api/reset`: Reset the model and start over
