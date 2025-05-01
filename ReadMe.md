@@ -1,51 +1,123 @@
-# Market Basket Analysis with Apache Spark
+# SuperMarket Basket Analysis Application
 
-This project performs market basket analysis on the **Online Retail Dataset** using Apache Spark’s FP-Growth algorithm. The goal is to identify frequent itemsets and association rules that help understand customer purchasing patterns.
+This project provides a web application for market basket analysis using the FP-Growth algorithm to find frequent itemsets and association rules in retail transaction data. The application consists of a Python FastAPI backend and a Next.js TypeScript frontend.
 
-## Features
+## Project Structure
 
-- **Frequent Itemset Mining**: Identifies items often purchased together.
-- **Association Rules**: Derives rules such as “if item A is purchased, item B is likely to be purchased.”
-- **Visualization**: Top frequent itemsets are visualized using bar charts for insights.
+- `backend/`: FastAPI backend server
+  - `app/`: Application code
+    - `models/`: Data models and analysis logic
+    - `routers/`: API endpoints
+  - `requirements.txt`: Python dependencies
+  - `run.py`: Server startup script
 
-## Dataset
+- `frontend/`: Next.js TypeScript frontend
+  - `src/`: Source code
+    - `app/`: Next.js app directory
+    - `components/`: React components
+    - `utils/`: Utility functions
 
-The dataset used is the **Online Retail Dataset**, available from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/online+retail). It contains transactions from a UK-based online retail store between 2010 and 2011.
+## Prerequisites
 
-## Requirements
+- Python 3.8+
+- Node.js 16+
+- npm or yarn
 
-Make sure you have the following dependencies installed. You can install them using:
+## Setup Instructions
 
-```bash
-pip install -r requirements.txt
-```
-# Installation
+### Backend Setup
 
-1. Clone this repository:
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
 
-    ```bash
-    git clone https://github.com/Thin-Equation/SuperMarketBasketAnalysis.git
-    cd SuperMarketBasketAnalysis
-    ```
+2. Create a virtual environment (optional but recommended):
+   ```
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+   ```
 
-2. Install the required Python packages:
+3. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+4. Start the FastAPI server:
+   ```
+   python run.py
+   ```
 
-3. Ensure that **Apache Spark** is installed and properly configured on your local machine, or use a cloud-based environment like **Databricks**.
+   The API will be available at http://localhost:8000
 
-4. Download the **Online Retail Dataset** from [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx) and place it in the project directory.
+   API documentation will be available at http://localhost:8000/docs
 
-## Usage
+### Frontend Setup
 
-To run the project, open your terminal and run the main script for Market Basket Analysis:
+1. Navigate to the frontend directory:
+   ```
+   cd frontend
+   ```
 
-```bash
-python BasketAnalysisProductRecommendation.py
-```
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-## Output
+3. Run the development server:
+   ```
+   npm run dev
+   ```
 
-The project identifies frequent itemsets and association rules using FP-Growth and visualizes the top 10 frequent itemsets in a bar chart.
+   The application will be available at http://localhost:3000
+
+## Usage Guide
+
+1. **Upload Data**
+   - On the homepage, upload your retail transaction data (Excel file)
+   - The Excel file should have columns like: InvoiceNo, CustomerID, Description, Quantity
+
+2. **Process Data**
+   - After successful upload, click "Process Data" to clean and prepare the data
+   - This step removes nulls, duplicates, and prepares transaction groups
+
+3. **Train Model**
+   - Adjust the minimum support and confidence parameters
+   - Click "Train Model" to run the FP-Growth algorithm
+   - Review the frequent itemsets and association rules
+
+4. **View Visualization**
+   - The application will display a chart of the top frequent itemsets
+
+5. **Get Recommendations**
+   - Enter products in the recommendation panel
+   - Click "Get Recommendations" to see product suggestions based on association rules
+
+## Sample Data
+
+You can use the provided "Online Retail.xlsx" file as sample data, which contains retail transaction records.
+
+## Technologies Used
+
+- **Backend**:
+  - Python
+  - FastAPI
+  - PySpark (for FP-Growth algorithm)
+  - Pandas
+  - Matplotlib
+
+- **Frontend**:
+  - Next.js
+  - TypeScript
+  - React
+  - Tailwind CSS
+  - Axios
+
+## API Endpoints
+
+- `POST /api/upload`: Upload retail data file
+- `POST /api/process`: Process and prepare data
+- `POST /api/train`: Train FP-Growth model
+- `GET /api/visualization`: Get visualization of frequent itemsets
+- `POST /api/recommend`: Get product recommendations
+- `POST /api/reset`: Reset the model and start over
